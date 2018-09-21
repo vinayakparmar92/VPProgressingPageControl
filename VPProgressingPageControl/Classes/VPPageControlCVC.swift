@@ -39,8 +39,7 @@ class VPPageControlCVC: UICollectionViewCell {
     }
     
     override func layoutSubviews() {
-        super.layoutSubviews()
-        
+        super.layoutSubviews()        
     }
     
     // MARK: Button click events

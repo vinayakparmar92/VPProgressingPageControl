@@ -80,8 +80,10 @@ open class VPProgressingPageControl: UIView {
         collectionView = UICollectionView(frame: CGRect.zero,
                                           collectionViewLayout: flowLayout)
         collectionView.isUserInteractionEnabled = false
+
+        let bundle = Bundle(for: VPPageControlCVC.self)
         collectionView.register(UINib.init(nibName: VPPageControlCVC.identifier(),
-                                           bundle: nil),
+                                           bundle: bundle),
                                 forCellWithReuseIdentifier: VPPageControlCVC.identifier())
         collectionView.dataSource = self
         collectionView.backgroundColor = backgroundColor
@@ -135,8 +137,7 @@ extension VPProgressingPageControl: UICollectionViewDataSource, VPPageControlCVC
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VPPageControlCVC.identifier(),
-                                                      for: indexPath) as! VPPageControlCVC
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VPPageControlCVC.identifier(), for: indexPath) as! VPPageControlCVC
         cell.progressContentView.progressColor = progressColor
         cell.progressContentView.animateDuration = animateDuration
         cell.contentView.backgroundColor = pageBackgroundColor
